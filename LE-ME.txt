@@ -1,0 +1,62 @@
+EMJOGO — PÁGINA PRINCIPAL
+
+ABRIR
+Abre index.html no navegador. Mantém styles.css e a pasta imagens ao lado.
+Não é necessário instalar nada. A página não contém JavaScript.
+As fotografias estão incluídas, pelo que a página funciona sem Internet.
+As ligações ao Google Maps e ao Unsplash precisam de Internet.
+
+EDITAR
+• Nome e localização: cabeçalho de index.html.
+• Eventos: cada bloco <article class="event-card"> é um evento.
+  Duplica um bloco e altera o título, os textos, as horas, a imagem, a morada,
+  os participantes e a distância. Dá um id único ao título e atualiza
+  o aria-labelledby do respetivo article. Atualiza também a contagem visível.
+• Datas: altera o texto apresentado, o atributo datetime e o intervalo no topo.
+• Fotografias: substitui os ficheiros na pasta imagens ou altera o atributo src.
+  Atualiza o texto alt para descrever a nova imagem.
+• Google Maps: altera a pesquisa no parâmetro query do href e o aria-label.
+• Cores, fonte, largura e cantos: variáveis no início de styles.css.
+• Aspeto: estilos organizados por secções com comentários em português.
+• Ícones: biblioteca SVG no início do HTML; todos os desenhos são editáveis.
+• Modalidades, Pesquisa e Perfil: troca href="#em-breve" pelos URLs finais.
+
+COMPORTAMENTO
+1 coluna em telemóvel, 2 a partir de 640 px, 3 a partir de 960 px.
+A faixa de modalidades desliza nativamente e pode ser percorrida por teclado.
+Início leva ao topo; Todos leva à lista de eventos; as moradas abrem o Maps.
+Os links provisórios apresentam um aviso de «em breve» através de HTML/CSS.
+Ainda não há filtragem, pesquisa, autenticação, inscrições nem geolocalização.
+A distância é apenas texto de exemplo, não uma medição da localização do visitante.
+O efeito de vidro usa backdrop-filter, com alternativa opaca quando não suportado.
+A página respeita preferências de movimento e de transparência reduzidos.
+
+CONTEÚDO DE DEMONSTRAÇÃO
+Os horários, os participantes, as distâncias e a agenda são fictícios.
+Os nomes dos locais e as moradas são sugestões para a composição visual;
+«Estúdio Movimento» é um nome fictício e o Maps aponta apenas para a avenida.
+As fotografias são reais, mas ilustrativas das modalidades. Não são fotografias
+verificadas dos espaços indicados e não comprovam eventos ou parcerias.
+O design pode ser adaptado ao mockup quando estiver disponível.
+
+FOTOGRAFIAS / FONTES
+Fotografias obtidas no Unsplash. Fontes e autores abaixo e nos comentários do HTML.
+Licença: https://unsplash.com/license
+
+tenis.jpg — Sinjin Thomas
+https://unsplash.com/photos/fKbf9j2Xa7M
+
+surf.jpg — Yuriy MLCN
+https://unsplash.com/photos/OCNAFoV2QzQ
+
+basquetebol.jpg — Unsplash
+https://unsplash.com/s/photos/basketball-court
+
+ginasio.jpg — Ambitious Studio / Rick Barrett
+https://unsplash.com/photos/w7jYaN7GqyA
+
+futebol.jpg — Jonathan Petersson
+https://unsplash.com/photos/ARU18GpF6QQ
+
+corrida.jpg — Olek Buzunov
+https://unsplash.com/@olek_bznv_photo

@@ -1,0 +1,872 @@
+/* =========================================================
+   EMJOGO — Página principal
+   1. Tema e base        2. Cabeçalho e introdução
+   3. Modalidades       4. Cartões de eventos
+   5. Navegação de vidro e avisos
+   6. Acessibilidade    7. Ecrãs maiores e impressão
+   Sem bibliotecas, fontes externas ou JavaScript.
+   ========================================================= */
+
+/* 1. TEMA E BASE
+   Altera estas variáveis para personalizar o design. */
+:root {
+  --cor-fundo: #f8f9f6;
+  --cor-superficie: #ffffff;
+  --cor-texto: #1c322b;
+  --cor-secundaria: #65716b;
+  --cor-verde: #214f3d;
+  --cor-verde-claro: #e9efdf;
+  --cor-lima: #dae8a5;
+  --cor-linha: #e3e7df;
+  --cor-laranja: #c35f3d;
+  --raio-cartao: 22px;
+  --largura-conteudo: 1180px;
+  --sombra-cartao: 0 5px 24px rgb(29 50 38 / 3%);
+  --fonte: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: 24px;
+  scroll-padding-bottom: 130px;
+}
+
+body {
+  margin: 0;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  font-family: var(--fonte);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.container {
+  width: min(var(--largura-conteudo), calc(100% - 40px));
+  margin-inline: auto;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon-library {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* 2. CABEÇALHO E INTRODUÇÃO */
+.site-header {
+  min-height: 82px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid var(--cor-linha);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 27px;
+  font-weight: 750;
+  letter-spacing: -1.3px;
+}
+
+.brand-mark {
+  width: 29px;
+  height: 29px;
+  color: var(--cor-verde);
+  stroke-width: 2.7;
+}
+
+.brand-dot {
+  color: var(--cor-laranja);
+}
+
+.header-location {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.header-location .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.header-tagline {
+  display: none;
+  color: var(--cor-secundaria);
+  font-size: 12px;
+}
+
+.intro {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  padding-block: 36px 28px;
+}
+
+.eyebrow {
+  margin-bottom: 12px;
+  color: var(--cor-verde);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+}
+
+h1 {
+  max-width: 680px;
+  font-size: clamp(37px, 5vw, 57px);
+  font-weight: 650;
+  line-height: 1.09;
+  letter-spacing: -1.9px;
+}
+
+h1 span {
+  color: var(--cor-verde);
+}
+
+.intro-copy {
+  max-width: 470px;
+  margin-top: 17px;
+  color: var(--cor-secundaria);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.intro-art {
+  display: none;
+  flex: 0 0 240px;
+  width: 240px;
+  height: 174px;
+}
+
+/* 3. MODALIDADES
+   O deslize é nativo: toque, trackpad, roda horizontal ou teclado.
+   Os links das modalidades são placeholders para futuras páginas. */
+.sports-section {
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--cor-linha);
+}
+
+.section-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 13px;
+}
+
+.section-caption h2 {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.scroll-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--cor-secundaria);
+  font-size: 11px;
+}
+
+.scroll-hint .icon {
+  width: 15px;
+  height: 15px;
+}
+
+.sports-list {
+  display: flex;
+  gap: 8px;
+  margin: 0;
+  padding: 5px 3px 10px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  list-style: none;
+  scroll-snap-type: x proximity;
+  scrollbar-color: #bdc8bc transparent;
+  scrollbar-width: thin;
+}
+
+.sports-list li {
+  flex: 0 0 78px;
+  scroll-snap-align: start;
+}
+
+.sport-link {
+  display: flex;
+  min-height: 87px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border-radius: 17px;
+  color: var(--cor-secundaria);
+  font-size: 11px;
+  font-weight: 500;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.sport-link .icon {
+  width: 28px;
+  height: 28px;
+  color: var(--cor-texto);
+  stroke-width: 1.45;
+}
+
+.sport-link[aria-current="true"] {
+  background: var(--cor-verde);
+  color: #fff;
+}
+
+.sport-link[aria-current="true"] .icon {
+  color: var(--cor-lima);
+}
+
+/* 4. CARTÕES DE EVENTOS
+   Cada evento corresponde a um <article> independente no HTML. */
+.events-section {
+  padding-top: 27px;
+}
+
+.events-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+.events-heading h2 {
+  font-size: 24px;
+  font-weight: 650;
+  letter-spacing: -.7px;
+}
+
+.events-heading p {
+  margin-top: 3px;
+  color: var(--cor-secundaria);
+  font-size: 12px;
+}
+
+.date-range {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  flex: 0 0 auto;
+  margin-top: 5px;
+  padding: 8px 10px;
+  border: 1px solid var(--cor-linha);
+  border-radius: 30px;
+  background: var(--cor-superficie);
+  font-size: 10px;
+  font-weight: 500;
+}
+
+.date-range .icon {
+  width: 14px;
+  height: 14px;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 25px;
+}
+
+.event-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--cor-linha);
+  border-radius: var(--raio-cartao);
+  background: var(--cor-superficie);
+  box-shadow: var(--sombra-cartao);
+}
+
+.event-photo {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 1.68;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: var(--cor-verde-claro);
+}
+
+.event-photo > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sport-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border: 1px solid rgb(255 255 255 / 75%);
+  border-radius: 20px;
+  background: #fffffff0;
+  color: var(--cor-texto);
+  font-size: 10px;
+  font-weight: 650;
+}
+
+.sport-badge .icon {
+  width: 14px;
+  height: 14px;
+}
+
+.event-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 20px 20px 0;
+}
+
+.event-time {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 9px;
+  color: var(--cor-verde);
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.event-time .icon {
+  width: 14px;
+  height: 14px;
+}
+
+.event-time .separator {
+  color: #87988b;
+}
+
+.event-card h3 {
+  font-size: 19px;
+  font-weight: 650;
+  line-height: 1.3;
+  letter-spacing: -.45px;
+  overflow-wrap: anywhere;
+}
+
+.event-description {
+  margin-top: 5px;
+  color: var(--cor-secundaria);
+  font-size: 12px;
+}
+
+.event-address {
+  margin-top: auto;
+  padding-top: 14px;
+  font-style: normal;
+}
+
+.event-address a {
+  display: flex;
+  min-height: 32px;
+  align-items: center;
+  gap: 6px;
+  padding-block: 4px;
+  color: #6b736d;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.event-address .icon {
+  width: 14px;
+  height: 14px;
+}
+
+.event-address .external-icon {
+  width: 12px;
+  height: 12px;
+  margin-left: auto;
+}
+
+.event-footer {
+  display: flex;
+  min-height: 64px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 14px;
+  border-top: 1px solid #edf0e9;
+}
+
+.participants {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+}
+
+.participants strong {
+  font-weight: 650;
+}
+
+.avatars {
+  display: flex;
+  padding-left: 4px;
+}
+
+.avatar {
+  display: grid;
+  width: 26px;
+  height: 26px;
+  place-items: center;
+  margin-left: -4px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: #e6ebdc;
+  color: #3c543e;
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.avatar:nth-child(2) {
+  background: #f1ded2;
+  color: #865c46;
+}
+
+.avatar:nth-child(3) {
+  background: #dfe8ed;
+  color: #4a6573;
+}
+
+.distance {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex: 0 0 auto;
+  color: var(--cor-secundaria);
+  font-size: 11px;
+}
+
+.distance .icon {
+  width: 13px;
+  height: 13px;
+}
+
+.end-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 32px;
+  color: var(--cor-secundaria);
+  font-size: 12px;
+  text-align: center;
+}
+
+.end-note .icon {
+  color: var(--cor-verde);
+  width: 17px;
+  height: 17px;
+}
+
+.site-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 34px;
+  padding-top: 20px;
+  padding-bottom: calc(135px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--cor-linha);
+  color: var(--cor-secundaria);
+  font-size: 10px;
+}
+
+.site-footer a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* 5. NAVEGAÇÃO FLUTUANTE
+   Fundo legível por defeito. O vidro é uma melhoria progressiva.
+   A margem inferior respeita a área segura dos telemóveis. */
+.glass-nav {
+  position: fixed;
+  z-index: 10;
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  left: 50%;
+  display: grid;
+  width: min(340px, calc(100% - 40px));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 5px;
+  padding: 7px;
+  border: 1px solid #fff;
+  border-radius: 28px;
+  background: #f2f5eff5;
+  box-shadow: 0 12px 40px rgb(30 51 39 / 18%),
+              0 2px 5px rgb(30 51 39 / 5%),
+              inset 0 1px 2px #fff,
+              inset 0 -1px 1px rgb(255 255 255 / 65%);
+  transform: translateX(-50%);
+}
+
+.glass-nav a {
+  display: flex;
+  min-height: 57px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  border: 1px solid transparent;
+  border-radius: 21px;
+  color: #4c5c51;
+  font-size: 10px;
+  font-weight: 600;
+  transition: background-color 160ms ease;
+}
+
+.glass-nav a[aria-current="page"] {
+  border-color: rgb(255 255 255 / 70%);
+  background: rgb(214 229 194 / 88%);
+  color: #234d36;
+  box-shadow: inset 0 1px 2px rgb(255 255 255 / 70%), 0 1px 3px rgb(27 50 33 / 5%);
+}
+
+.glass-nav .icon {
+  width: 22px;
+  height: 22px;
+}
+
+@supports ((backdrop-filter: blur(20px)) or (-webkit-backdrop-filter: blur(20px))) {
+  .glass-nav {
+    background: linear-gradient(130deg, rgb(255 255 255 / 76%), rgb(241 246 235 / 58%));
+    -webkit-backdrop-filter: blur(22px) saturate(155%);
+    backdrop-filter: blur(22px) saturate(155%);
+  }
+}
+
+/* Destino provisório dos links: aviso acessível, aberto por âncora.
+   Substitui href="#em-breve" pelos URLs reais quando existirem. */
+.coming-soon {
+  display: none;
+  position: fixed;
+  z-index: 20;
+  right: 20px;
+  bottom: calc(110px + env(safe-area-inset-bottom, 0px));
+  left: 20px;
+  max-width: 380px;
+  margin-inline: auto;
+  padding: 18px 54px 18px 20px;
+  border: 1px solid var(--cor-linha);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 12px 40px rgb(30 51 39 / 18%);
+  scroll-margin: 140px;
+}
+
+.coming-soon:target {
+  display: block;
+}
+
+.coming-soon h2 {
+  font-size: 16px;
+}
+
+.coming-soon p {
+  margin-top: 3px;
+  color: var(--cor-secundaria);
+  font-size: 12px;
+}
+
+.close-notice {
+  position: absolute;
+  top: 9px;
+  right: 7px;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border-radius: 50%;
+}
+
+/* 6. ACESSIBILIDADE */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 30;
+  top: 8px;
+  left: 12px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  background: var(--cor-verde);
+  color: #fff;
+  transform: translateY(-150%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+a:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid #b3633e;
+  outline-offset: 3px;
+}
+
+@media (hover: hover) {
+  .sport-link:hover {
+    background: var(--cor-verde-claro);
+    color: var(--cor-verde);
+  }
+
+  .sport-link[aria-current="true"]:hover {
+    background: #2d614b;
+    color: #fff;
+  }
+
+  .event-address a:hover {
+    color: var(--cor-verde);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .glass-nav a:hover,
+  .close-notice:hover {
+    background: rgb(221 232 210 / 80%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    transition: none !important;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .glass-nav {
+    background: #f2f5ef;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+/* 7. RESPONSIVIDADE
+   Telemóvel: 1 coluna. Tablet: 2 colunas. Computador: 3 colunas. */
+@media (max-width: 359px) {
+  .container {
+    width: calc(100% - 28px);
+  }
+
+  .header-location {
+    font-size: 10px;
+  }
+
+  .events-heading {
+    flex-wrap: wrap;
+  }
+
+  .date-range {
+    margin-top: 0;
+  }
+
+  .event-body {
+    padding-inline: 16px;
+  }
+}
+
+@media (min-width: 640px) {
+  .container {
+    width: min(var(--largura-conteudo), calc(100% - 72px));
+  }
+
+  .header-location {
+    padding: 8px 13px;
+    border: 1px solid var(--cor-linha);
+    border-radius: 24px;
+    background: var(--cor-superficie);
+  }
+
+  .intro {
+    padding-block: 42px 34px;
+  }
+
+  .intro-copy {
+    font-size: 15px;
+  }
+
+  .events-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .event-body {
+    padding-inline: 18px;
+  }
+
+  .events-heading h2 {
+    font-size: 28px;
+  }
+
+  .events-heading p {
+    font-size: 13px;
+  }
+
+  .date-range {
+    padding: 9px 14px;
+    font-size: 12px;
+  }
+
+  .date-range .icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (min-width: 960px) {
+  .site-header {
+    min-height: 88px;
+  }
+
+  .header-tagline {
+    display: block;
+    margin-right: auto;
+    margin-left: 24px;
+  }
+
+  .intro {
+    padding-block: 42px 36px;
+  }
+
+  .intro-art {
+    display: block;
+    margin-right: 25px;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+  }
+
+  .intro-copy {
+    max-width: 570px;
+  }
+
+  .sports-list {
+    gap: 13px;
+  }
+
+  .sports-list li {
+    flex-basis: 100px;
+    flex-grow: 1;
+  }
+
+  .sport-link {
+    min-height: 88px;
+    font-size: 12px;
+  }
+
+  .section-caption h2 {
+    font-size: 14px;
+  }
+
+  .events-section {
+    padding-top: 30px;
+  }
+
+  .events-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .event-body {
+    padding-inline: 20px;
+  }
+
+  .site-footer {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 1260px) {
+  .scroll-hint {
+    display: none;
+  }
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+
+  .glass-nav,
+  .coming-soon,
+  .skip-link,
+  .sports-section,
+  .intro-art {
+    display: none;
+  }
+
+  .events-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .event-card {
+    break-inside: avoid;
+    box-shadow: none;
+  }
+
+  .site-footer {
+    padding-bottom: 0;
+  }
+}

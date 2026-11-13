@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Encontra companhia para o teu próximo treino. Descobre eventos de ténis, surf, futebol, basquetebol e muito mais perto de ti.">
+  <meta name="theme-color" content="#f8f9f6">
+  <title>emjogo. — O teu próximo plano começa aqui</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body id="inicio">
+  <a class="skip-link" href="#conteudo">Saltar para o conteúdo</a>
+
+  <!-- ÍCONES: biblioteca SVG reutilizável, desenhada para esta página.
+       Para inserir um ícone: <svg class="icon"><use href="#icon-NOME"></use></svg>.
+       Os SVG são elementos HTML de apresentação, sem scripts. -->
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <symbol id="icon-marca" viewBox="0 0 24 24"><path d="m3 17 7-10m-2 13L18 6m-3 13 6-9"/></symbol>
+    <symbol id="icon-todos" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></symbol>
+    <symbol id="icon-tenis" viewBox="0 0 24 24"><ellipse cx="14" cy="8" rx="6" ry="7" transform="rotate(38 14 8)"/><path d="m10 13-7 8m2-5 3 3m2-15 8 7m-9-4 7 6m-5-3 5-6m-1 9 4-5"/></symbol>
+    <symbol id="icon-surf" viewBox="0 0 24 24"><path d="M9 16C6 12 13 2 20 2c0 7-10 14-14 12m1 0L20 2M2 19c2-3 4 3 7 0s5 3 8 0 4 0 5 0"/></symbol>
+    <symbol id="icon-ginasio" viewBox="0 0 24 24"><path d="m6 7 11 11M3 8l5-5m8 18 5-5M2 6l4-4m12 20 4-4M4 10l6-6m4 16 6-6"/></symbol>
+    <symbol id="icon-futebol" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m12 8 4 3-1.5 4.5h-5L8 11l4-3Zm0-5v5m8.5.5L16 11m1.5 8-3-3.5m-8 3.5 3-3.5M3.5 8.5 8 11"/></symbol>
+    <symbol id="icon-basquetebol" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m5.6 5.6 12.8 12.8m0-12.8L5.6 18.4M3 10c5 2 9-2 7-7m11 11c-5-2-9 2-7 7"/></symbol>
+    <symbol id="icon-corrida" viewBox="0 0 24 24"><circle cx="15" cy="4" r="2"/><path d="m12 8-4 4-4-1m8-3 4 4h4m-9-3-1 6 5 2-1 5m-4-7-3 5H2"/></symbol>
+    <symbol id="icon-ciclismo" viewBox="0 0 24 24"><circle cx="5.5" cy="16.5" r="4"/><circle cx="18.5" cy="16.5" r="4"/><path d="m5.5 16.5 5-9 5 3-4 6h-6m10-6 3 6M8 7h5m2-3h3l2 5"/></symbol>
+    <symbol id="icon-padel" viewBox="0 0 24 24"><path d="M16 2c5 1 6 6 3 10-2 3-7 5-10 2S6 7 9 4c2-2 5-3 7-2Zm-6 12-6 8-3-2 7-7"/><path d="M12 5h.01M16 5h.01M10 8h.01M14 8h.01M18 8h.01M11 11h.01M15 11h.01" stroke-width="2.5"/></symbol>
+    <symbol id="icon-natacao" viewBox="0 0 24 24"><path d="m3 12 5-4 5 5 4-3M8 8l2-5 5 2M2 17c3-3 4 3 7 0s4 3 7 0 4 0 6 0M2 21c3-3 4 3 7 0s4 3 7 0 4 0 6 0"/><circle cx="19" cy="8" r="2"/></symbol>
+    <symbol id="icon-pin" viewBox="0 0 24 24"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="icon-seta" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+    <symbol id="icon-externo" viewBox="0 0 24 24"><path d="M7 17 17 7M7 7h10v10"/></symbol>
+    <symbol id="icon-calendario" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4m10-4v4M3 11h18m-13 5h2m4 0h2"/></symbol>
+    <symbol id="icon-distancia" viewBox="0 0 24 24"><path d="m21 3-7 18-4-7-7-4L21 3Z"/></symbol>
+    <symbol id="icon-inicio" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1V10Z"/></symbol>
+    <symbol id="icon-pesquisa" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="7"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="icon-perfil" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/></symbol>
+    <symbol id="icon-fechar" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="icon-brilho" viewBox="0 0 24 24"><path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5L12 3Z"/></symbol>
+  </svg>
+
+  <!-- CABEÇALHO: altera o nome da app e a localização aqui. -->
+  <header class="site-header container">
+    <a class="brand" href="#inicio" aria-label="emjogo — página inicial">
+      <svg class="icon brand-mark" aria-hidden="true" focusable="false"><use href="#icon-marca"></use></svg>
+      <span>emjogo<span class="brand-dot">.</span></span>
+    </a>
+    <p class="header-tagline">O desporto junta-nos.</p>
+    <p class="header-location">
+      <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-pin"></use></svg>
+      Lisboa e arredores
+    </p>
+  </header>
+
+  <main class="container" id="conteudo">
+    <!-- INTRODUÇÃO: marca e ilustração facilmente substituíveis. -->
+    <section class="intro" aria-labelledby="titulo-principal">
+      <div>
+        <p class="eyebrow">O teu ponto de encontro</p>
+        <h1 id="titulo-principal">Sai da rotina.<br><span>Entra em jogo.</span></h1>
+        <p class="intro-copy">Encontra o teu desporto, conhece a tua equipa.<br>Há sempre um bom plano perto de ti.</p>
+      </div>
+
+      <!-- Ilustração decorativa: linhas de campo e bola, sem ficheiro externo. -->
+      <svg class="intro-art" viewBox="0 0 240 174" fill="none" aria-hidden="true" focusable="false">
+        <g transform="rotate(-9 120 87)">
+          <rect x="25" y="19" width="190" height="132" rx="19" fill="#e9efdf"/>
+          <rect x="45" y="37" width="150" height="96" rx="3" stroke="#b9c9a6" stroke-width="1.5"/>
+          <path d="M120 37v96M45 53h150M45 117h150M45 85h150" stroke="#b9c9a6" stroke-width="1.5"/>
+          <path d="M120 27v116" stroke="#214f3d" stroke-width="2" stroke-dasharray="3 4"/>
+          <ellipse cx="172" cy="116" rx="26" ry="6" fill="#214f3d" opacity=".08"/>
+          <circle cx="166" cy="94" r="26" fill="#d6e59c" stroke="#bacb7e"/>
+          <path d="M145 79c22 2 32 15 33 37m-27 0c-1-22 13-39 30-42" stroke="#fafbef" stroke-width="2"/>
+          <path d="m32 119-13 5m17 3-6 10M204 38l12-8m-8 16 14-1" stroke="#c35f3d" stroke-width="2" stroke-linecap="round"/>
+        </g>
+      </svg>
+    </section>
+
+    <!-- MODALIDADES: links provisórios. Troca #em-breve pelos destinos reais.
+         Não existe filtragem nesta primeira página estática. -->
+    <section class="sports-section" id="categorias" aria-labelledby="titulo-modalidades">
+      <div class="section-caption">
+        <h2 id="titulo-modalidades">Qual é o teu desporto?</h2>
+        <p class="scroll-hint">Desliza para explorar <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-seta"></use></svg></p>
+      </div>
+      <nav aria-label="Modalidades desportivas">
+        <ul class="sports-list" tabindex="0" aria-label="Modalidades; desloca horizontalmente para ver mais">
+          <li>
+            <a class="sport-link" href="#eventos" aria-current="true">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-todos"></use></svg>
+              <span>Todos</span>
+            </a>
+          </li>
+          <li>
+            <a class="sport-link" href="#em-breve" aria-label="Ténis — em breve">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-tenis"></use></svg>
+              <span>Ténis</span>
+            </a>
+          </li>
+          <li>
+            <a class="sport-link" href="#em-breve" aria-label="Surf — em breve">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-surf"></use></svg>
+              <span>Surf</span>
+            </a>
+          </li>
+          <li>
+            <a class="sport-link" href="#em-breve" aria-label="Ginásio — em breve">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-ginasio"></use></svg>
+              <span>Ginásio</span>
+            </a>
+          </li>
+          <li>
+            <a class="sport-link" href="#em-breve" aria-label="Futebol — em breve">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-futebol"></use></svg>
+              <span>Futebol</span>
+            </a>
+          </li>
+          <li>
+            <a class="sport-link" href="#em-breve" aria-label="Basquetebol — em breve">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-basquetebol"></use></svg>
+              <span>Basquetebol</span>
+            </a>
+          </li>
+          <li>
+            <a class="sport-link" href="#em-breve" aria-label="Corrida — em breve">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-corrida"></use></svg>
+              <span>Corrida</span>
+            </a>
+          </li>
+          <li>
+            <a class="sport-link" href="#em-breve" aria-label="Ciclismo — em breve">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-ciclismo"></use></svg>
+              <span>Ciclismo</span>
+            </a>
+          </li>
+          <li>
+            <a class="sport-link" href="#em-breve" aria-label="Padel — em breve">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-padel"></use></svg>
+              <span>Padel</span>
+            </a>
+          </li>
+          <li>
+            <a class="sport-link" href="#em-breve" aria-label="Natação — em breve">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-natacao"></use></svg>
+              <span>Natação</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </section>
+
+    <!-- EVENTOS: dados de demonstração, editáveis diretamente nos articles.
+         Datas, participantes e distâncias não são atualizados automaticamente.
+         Fotografias reais ilustrativas; não representam os espaços anunciados. -->
+    <section class="events-section" id="eventos" aria-labelledby="titulo-eventos">
+      <div class="events-heading">
+        <div>
+          <h2 id="titulo-eventos">Perto de ti</h2>
+          <p>6 eventos de exemplo</p>
+        </div>
+        <p class="date-range">
+          <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-calendario"></use></svg>
+          <span>14–15 nov. 2026</span>
+        </p>
+      </div>
+
+      <div class="events-grid">
+        <!-- EVENTO 1: TÉNIS
+             Para criar outro evento, duplica este article e altera os dados.
+             Fotografia ilustrativa: Sinjin Thomas — https://unsplash.com/photos/fKbf9j2Xa7M -->
+        <article class="event-card" aria-labelledby="evento-tenis">
+          <figure class="event-photo">
+            <img src="imagens/tenis.jpg"
+                 alt="Vista aérea de campos de ténis verdes rodeados de árvores."
+                 width="1000" height="680" fetchpriority="high" decoding="async">
+            <figcaption class="sport-badge">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-tenis"></use></svg>
+              Ténis
+            </figcaption>
+          </figure>
+
+          <div class="event-body">
+            <p class="event-time">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-calendario"></use></svg>
+              <time datetime="2026-11-14">Sáb., 14 nov.</time>
+              <span class="separator" aria-hidden="true">·</span>
+              <span>
+                <time datetime="2026-11-14T10:00:00">10:00</time><span aria-hidden="true">–</span><span class="sr-only"> às </span><time datetime="2026-11-14T11:30:00">11:30</time>
+              </span>
+            </p>
+            <h3 id="evento-tenis">Centro de Ténis do Jamor</h3>
+            <p class="event-description">Uma partida de duplas, sem pressas.</p>
+
+            <!-- O texto e a pesquisa do Google Maps podem ser alterados aqui. -->
+            <address class="event-address">
+              <a href="https://www.google.com/maps/search/?api=1&amp;query=Centro%20de%20T%C3%A9nis%20do%20Jamor%2C%20Oeiras%2C%20Portugal"
+                 target="_blank" rel="noopener noreferrer"
+                 aria-label="Complexo do Jamor, Oeiras — abrir no Google Maps, num novo separador">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-pin"></use></svg>
+                <span>Complexo do Jamor, Oeiras</span>
+                <svg class="icon external-icon" aria-hidden="true" focusable="false"><use href="#icon-externo"></use></svg>
+              </a>
+            </address>
+
+            <footer class="event-footer">
+              <div class="participants">
+                <div class="avatars" aria-hidden="true">
+                    <span class="avatar">M</span>
+                    <span class="avatar">J</span>
+                    <span class="avatar">R</span>
+                </div>
+                <span><strong>6</strong> participantes</span>
+              </div>
+              <span class="distance" aria-label="A 8,2 quilómetros">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-distancia"></use></svg>
+                8,2 km
+              </span>
+            </footer>
+          </div>
+        </article>
+        <!-- EVENTO 2: SURF
+             Para criar outro evento, duplica este article e altera os dados.
+             Fotografia ilustrativa: Yuriy MLCN — https://unsplash.com/photos/OCNAFoV2QzQ -->
+        <article class="event-card" aria-labelledby="evento-surf">
+          <figure class="event-photo">
+            <img src="imagens/surf.jpg"
+                 alt="Surfista numa onda verde, fotografado de cima."
+                 width="1000" height="680" loading="lazy" decoding="async">
+            <figcaption class="sport-badge">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-surf"></use></svg>
+              Surf
+            </figcaption>
+          </figure>
+
+          <div class="event-body">
+            <p class="event-time">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-calendario"></use></svg>
+              <time datetime="2026-11-14">Sáb., 14 nov.</time>
+              <span class="separator" aria-hidden="true">·</span>
+              <span>
+                <time datetime="2026-11-14T10:30:00">10:30</time><span aria-hidden="true">–</span><span class="sr-only"> às </span><time datetime="2026-11-14T12:00:00">12:00</time>
+              </span>
+            </p>
+            <h3 id="evento-surf">Praia de Carcavelos</h3>
+            <p class="event-description">Primeiras ondas, boa companhia.</p>
+
+            <!-- O texto e a pesquisa do Google Maps podem ser alterados aqui. -->
+            <address class="event-address">
+              <a href="https://www.google.com/maps/search/?api=1&amp;query=Praia%20de%20Carcavelos%2C%20Portugal"
+                 target="_blank" rel="noopener noreferrer"
+                 aria-label="Avenida Marginal, Carcavelos — abrir no Google Maps, num novo separador">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-pin"></use></svg>
+                <span>Avenida Marginal, Carcavelos</span>
+                <svg class="icon external-icon" aria-hidden="true" focusable="false"><use href="#icon-externo"></use></svg>
+              </a>
+            </address>
+
+            <footer class="event-footer">
+              <div class="participants">
+                <div class="avatars" aria-hidden="true">
+                    <span class="avatar">I</span>
+                    <span class="avatar">T</span>
+                    <span class="avatar">L</span>
+                </div>
+                <span><strong>8</strong> participantes</span>
+              </div>
+              <span class="distance" aria-label="A 18,4 quilómetros">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-distancia"></use></svg>
+                18,4 km
+              </span>
+            </footer>
+          </div>
+        </article>
+        <!-- EVENTO 3: BASQUETEBOL
+             Para criar outro evento, duplica este article e altera os dados.
+             Fotografia ilustrativa: Unsplash — https://unsplash.com/s/photos/basketball-court -->
+        <article class="event-card" aria-labelledby="evento-basquetebol">
+          <figure class="event-photo">
+            <img src="imagens/basquetebol.jpg"
+                 alt="Campo de basquetebol colorido com cesto e edifícios ao fundo."
+                 width="1000" height="680" loading="lazy" decoding="async">
+            <figcaption class="sport-badge">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-basquetebol"></use></svg>
+              Basquetebol
+            </figcaption>
+          </figure>
+
+          <div class="event-body">
+            <p class="event-time">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-calendario"></use></svg>
+              <time datetime="2026-11-14">Sáb., 14 nov.</time>
+              <span class="separator" aria-hidden="true">·</span>
+              <span>
+                <time datetime="2026-11-14T16:00:00">16:00</time><span aria-hidden="true">–</span><span class="sr-only"> às </span><time datetime="2026-11-14T17:30:00">17:30</time>
+              </span>
+            </p>
+            <h3 id="evento-basquetebol">Parque de Jogos 1.º de Maio</h3>
+            <p class="event-description">Três para três. Só faltas tu.</p>
+
+            <!-- O texto e a pesquisa do Google Maps podem ser alterados aqui. -->
+            <address class="event-address">
+              <a href="https://www.google.com/maps/search/?api=1&amp;query=Parque%20de%20Jogos%201%C2%BA%20de%20Maio%2C%20Avenida%20Rio%20de%20Janeiro%2C%20Lisboa%2C%20Portugal"
+                 target="_blank" rel="noopener noreferrer"
+                 aria-label="Avenida Rio de Janeiro, Lisboa — abrir no Google Maps, num novo separador">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-pin"></use></svg>
+                <span>Avenida Rio de Janeiro, Lisboa</span>
+                <svg class="icon external-icon" aria-hidden="true" focusable="false"><use href="#icon-externo"></use></svg>
+              </a>
+            </address>
+
+            <footer class="event-footer">
+              <div class="participants">
+                <div class="avatars" aria-hidden="true">
+                    <span class="avatar">D</span>
+                    <span class="avatar">A</span>
+                    <span class="avatar">P</span>
+                </div>
+                <span><strong>5</strong> participantes</span>
+              </div>
+              <span class="distance" aria-label="A 2,6 quilómetros">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-distancia"></use></svg>
+                2,6 km
+              </span>
+            </footer>
+          </div>
+        </article>
+        <!-- EVENTO 4: GINÁSIO
+             Para criar outro evento, duplica este article e altera os dados.
+             Fotografia ilustrativa: Ambitious Studio / Rick Barrett — https://unsplash.com/photos/w7jYaN7GqyA -->
+        <article class="event-card" aria-labelledby="evento-ginasio">
+          <figure class="event-photo">
+            <img src="imagens/ginasio.jpg"
+                 alt="Ginásio com barras, pesos e equipamento de treino junto a grandes janelas."
+                 width="1000" height="680" loading="lazy" decoding="async">
+            <figcaption class="sport-badge">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-ginasio"></use></svg>
+              Ginásio
+            </figcaption>
+          </figure>
+
+          <div class="event-body">
+            <p class="event-time">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-calendario"></use></svg>
+              <time datetime="2026-11-15">Dom., 15 nov.</time>
+              <span class="separator" aria-hidden="true">·</span>
+              <span>
+                <time datetime="2026-11-15T09:00:00">09:00</time><span aria-hidden="true">–</span><span class="sr-only"> às </span><time datetime="2026-11-15T10:00:00">10:00</time>
+              </span>
+            </p>
+            <h3 id="evento-ginasio">Estúdio Movimento</h3>
+            <p class="event-description">Treino funcional para todos os ritmos.</p>
+
+            <!-- O texto e a pesquisa do Google Maps podem ser alterados aqui. -->
+            <address class="event-address">
+              <a href="https://www.google.com/maps/search/?api=1&amp;query=Avenida%20da%20Rep%C3%BAblica%2C%20Lisboa%2C%20Portugal"
+                 target="_blank" rel="noopener noreferrer"
+                 aria-label="Avenida da República, Lisboa — abrir no Google Maps, num novo separador">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-pin"></use></svg>
+                <span>Avenida da República, Lisboa</span>
+                <svg class="icon external-icon" aria-hidden="true" focusable="false"><use href="#icon-externo"></use></svg>
+              </a>
+            </address>
+
+            <footer class="event-footer">
+              <div class="participants">
+                <div class="avatars" aria-hidden="true">
+                    <span class="avatar">C</span>
+                    <span class="avatar">B</span>
+                    <span class="avatar">S</span>
+                </div>
+                <span><strong>10</strong> participantes</span>
+              </div>
+              <span class="distance" aria-label="A 1,3 quilómetros">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-distancia"></use></svg>
+                1,3 km
+              </span>
+            </footer>
+          </div>
+        </article>
+        <!-- EVENTO 5: FUTEBOL
+             Para criar outro evento, duplica este article e altera os dados.
+             Fotografia ilustrativa: Jonathan Petersson — https://unsplash.com/photos/ARU18GpF6QQ -->
+        <article class="event-card" aria-labelledby="evento-futebol">
+          <figure class="event-photo">
+            <img src="imagens/futebol.jpg"
+                 alt="Campo de futebol vazio com relvado e baliza iluminados ao anoitecer."
+                 width="1000" height="680" loading="lazy" decoding="async">
+            <figcaption class="sport-badge">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-futebol"></use></svg>
+              Futebol
+            </figcaption>
+          </figure>
+
+          <div class="event-body">
+            <p class="event-time">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-calendario"></use></svg>
+              <time datetime="2026-11-15">Dom., 15 nov.</time>
+              <span class="separator" aria-hidden="true">·</span>
+              <span>
+                <time datetime="2026-11-15T18:00:00">18:00</time><span aria-hidden="true">–</span><span class="sr-only"> às </span><time datetime="2026-11-15T19:00:00">19:00</time>
+              </span>
+            </p>
+            <h3 id="evento-futebol">Campo do Restelo</h3>
+            <p class="event-description">Uma peladinha para fechar o dia.</p>
+
+            <!-- O texto e a pesquisa do Google Maps podem ser alterados aqui. -->
+            <address class="event-address">
+              <a href="https://www.google.com/maps/search/?api=1&amp;query=Pra%C3%A7a%20de%20Goa%2C%20Restelo%2C%20Lisboa%2C%20Portugal"
+                 target="_blank" rel="noopener noreferrer"
+                 aria-label="Praça de Goa, Lisboa — abrir no Google Maps, num novo separador">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-pin"></use></svg>
+                <span>Praça de Goa, Lisboa</span>
+                <svg class="icon external-icon" aria-hidden="true" focusable="false"><use href="#icon-externo"></use></svg>
+              </a>
+            </address>
+
+            <footer class="event-footer">
+              <div class="participants">
+                <div class="avatars" aria-hidden="true">
+                    <span class="avatar">R</span>
+                    <span class="avatar">F</span>
+                    <span class="avatar">N</span>
+                </div>
+                <span><strong>12</strong> participantes</span>
+              </div>
+              <span class="distance" aria-label="A 6,7 quilómetros">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-distancia"></use></svg>
+                6,7 km
+              </span>
+            </footer>
+          </div>
+        </article>
+        <!-- EVENTO 6: CORRIDA
+             Para criar outro evento, duplica este article e altera os dados.
+             Fotografia ilustrativa: Olek Buzunov — https://unsplash.com/@olek_bznv_photo -->
+        <article class="event-card" aria-labelledby="evento-corrida">
+          <figure class="event-photo">
+            <img src="imagens/corrida.jpg"
+                 alt="Grupo de pessoas a correr num percurso de parque rodeado de árvores."
+                 width="1000" height="680" loading="lazy" decoding="async">
+            <figcaption class="sport-badge">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-corrida"></use></svg>
+              Corrida
+            </figcaption>
+          </figure>
+
+          <div class="event-body">
+            <p class="event-time">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-calendario"></use></svg>
+              <time datetime="2026-11-15">Dom., 15 nov.</time>
+              <span class="separator" aria-hidden="true">·</span>
+              <span>
+                <time datetime="2026-11-15T18:30:00">18:30</time><span aria-hidden="true">–</span><span class="sr-only"> às </span><time datetime="2026-11-15T19:30:00">19:30</time>
+              </span>
+            </p>
+            <h3 id="evento-corrida">Parque das Nações</h3>
+            <p class="event-description">Cinco quilómetros à conversa, junto ao rio.</p>
+
+            <!-- O texto e a pesquisa do Google Maps podem ser alterados aqui. -->
+            <address class="event-address">
+              <a href="https://www.google.com/maps/search/?api=1&amp;query=Passeio%20dos%20Her%C3%B3is%20do%20Mar%2C%20Lisboa%2C%20Portugal"
+                 target="_blank" rel="noopener noreferrer"
+                 aria-label="Passeio dos Heróis do Mar, Lisboa — abrir no Google Maps, num novo separador">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-pin"></use></svg>
+                <span>Passeio dos Heróis do Mar, Lisboa</span>
+                <svg class="icon external-icon" aria-hidden="true" focusable="false"><use href="#icon-externo"></use></svg>
+              </a>
+            </address>
+
+            <footer class="event-footer">
+              <div class="participants">
+                <div class="avatars" aria-hidden="true">
+                    <span class="avatar">A</span>
+                    <span class="avatar">V</span>
+                    <span class="avatar">M</span>
+                </div>
+                <span><strong>14</strong> participantes</span>
+              </div>
+              <span class="distance" aria-label="A 5,1 quilómetros">
+                <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-distancia"></use></svg>
+                5,1 km
+              </span>
+            </footer>
+          </div>
+        </article>
+      </div>
+      <p class="end-note"><svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-brilho"></use></svg> O melhor do desporto é quem joga contigo.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <p>emjogo. <span aria-hidden="true">/</span> Menos rotina. Mais movimento.</p>
+    <p>Dados de demonstração · Fotografias ilustrativas do <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer">Unsplash<span class="sr-only"> (novo separador)</span></a>.</p>
+  </footer>
+
+  <!-- NAVEGAÇÃO: Pesquisa e Perfil ficam preparados para futuras páginas. -->
+  <nav class="glass-nav" aria-label="Navegação principal">
+    <a href="#inicio" aria-current="page">
+      <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-inicio"></use></svg>
+      <span>Início</span>
+    </a>
+    <a href="#em-breve" aria-label="Pesquisa — em breve">
+      <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-pesquisa"></use></svg>
+      <span>Pesquisa</span>
+    </a>
+    <a href="#em-breve" aria-label="Perfil — em breve">
+      <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-perfil"></use></svg>
+      <span>Perfil</span>
+    </a>
+  </nav>
+
+  <!-- Aviso simples, controlado apenas por :target no CSS. -->
+  <aside class="coming-soon" id="em-breve" tabindex="-1" aria-labelledby="titulo-em-breve">
+    <h2 id="titulo-em-breve">Ainda estamos a aquecer.</h2>
+    <p>Esta área estará disponível em breve.</p>
+    <a class="close-notice" href="#eventos" aria-label="Fechar aviso e voltar aos eventos">
+      <svg class="icon" aria-hidden="true" focusable="false"><use href="#icon-fechar"></use></svg>
+    </a>
+  </aside>
+</body>
+</html>
