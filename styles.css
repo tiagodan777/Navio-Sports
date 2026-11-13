@@ -184,7 +184,6 @@ h1 span {
    Os links das modalidades são placeholders para futuras páginas. */
 .sports-section {
   padding-bottom: 22px;
-  border-bottom: 1px solid var(--cor-linha);
 }
 
 .section-caption {
